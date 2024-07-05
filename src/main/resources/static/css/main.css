@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 10px;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Добавляет padding в общую ширину элемента */
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.money-inputs {
+    display: flex;
+    align-items: center;
+}
+
+.money-inputs input {
+    margin-right: 5px;
+}
+
+.skill-fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.skill-fieldset input,
+.skill-fieldset select,
+.skill-fieldset textarea {
+    display: block;
+    margin-bottom: 5px;
+    width: 95%;
+    padding: 8px;
+}
+
+.skill-fieldset label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.skill-description-textarea {
+    width: 95%;
+    height: 100px; /* Вы можете изменить размер по вашему усмотрению */
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px #ddd;
+    overflow: auto;
+    resize: vertical; /* Позволяет пользователю изменять размер поля */
+}
+
+.item-fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.item-fieldset input,
+.item-fieldset select,
+.item-fieldset textarea {
+    display: block;
+    margin-bottom: 5px;
+    width: 95%;
+    padding: 8px;
+}
+
+.item-fieldset label {
+    font-weight: bold;
+    margin-top: 10px;
+}

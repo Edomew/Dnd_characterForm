@@ -1,0 +1,25 @@
+spring:
+     application:
+          name: dnd
+     datasource:
+          url: jdbc:mysql://localhost:3306/characters
+          password: Edomews
+          username: Edomew
+          driver-class-name: com.mysql.cj.jdbc.Driver
+     mvc:
+          hiddenmethod:
+               filter:
+                    enabled: true
+          static-path-pattern: /content/**
+     web:
+          resources:
+               static-locations: classpath:/static
+     jpa:
+          hibernate:
+               ddl-auto: update
+          open-in-view: off
+     docker:
+          compose:
+               enabled: false
+server:
+     port: 8080

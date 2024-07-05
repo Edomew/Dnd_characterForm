@@ -1,0 +1,12 @@
+<div th:fragment="moneyInBag(money)">
+    <label>Деньги:</label>
+    <div class="money-inputs" th:object="${money}">
+        <label for="gold">Золото</label><input type="number" id="gold" th:field="*{gold}" placeholder="Золото"
+                                               required>
+        <label for="silver">Серебро</label><input type="number" id="silver" th:field="*{silver}" min="0" max="99"
+                                                  placeholder="Серебро" required>
+        <label for="bronze">Бронза</label><input type="number" id="bronze" th:field="*{bronze}" min="0" max="99"
+                                                 placeholder="Бронза" required>
+        <span id="totalMoney">0,0000</span>
+    </div>
+</div>

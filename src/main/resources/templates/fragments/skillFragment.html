@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Фрагмент навыка</title>
+</head>
+<body>
+<fieldset th:fragment="skillFragment(skill)" th:object="${skill}">
+    <legend>Навык</legend>
+    <div class="form-group">
+        <label for="skillName">Название навыка:</label>
+        <input type="text" id="skillName" th:field="*{skillName}" required />
+    </div>
+    <div class="form-group">
+        <label for="skillLevel">Уровень навыка:</label>
+        <input type="number" id="skillLevel" th:field="*{skillLevel}" required />
+    </div>
+    <div class="form-group">
+        <label for="skillInfluence">Тип влияния:</label>
+        <select id="skillInfluence" th:field="*{skillInfluence}">
+            <option th:each="type : ${T(com.edomew.dnd.character.skill.InfluenceType).values()}"
+                    th:value="${type}" th:text="${type.description}">Выберите тип</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="skillInfluencePoints">Очки влияния:</label>
+        <input type="number" id="skillInfluencePoints" th:field="*{skillInfluencePoints}" required />
+    </div>
+    <div class="form-group">
+        <label for="skillDescription">Описание навыка:</label>
+        <textarea id="skillDescription" th:field="*{skillDescription}" required></textarea>
+    </div>
+</fieldset>
+
+</body>
+</html>

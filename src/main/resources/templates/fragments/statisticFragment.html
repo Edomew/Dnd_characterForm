@@ -1,0 +1,15 @@
+<fieldset th:fragment="stat(statistics)" th:object="${statistics}">
+    <legend>Характеристики:</legend>
+    <div th:each="stat, iterStat : *{stats}">
+        <label th:for="${'stat-' + stat.statName}" th:text="${stat.statName}">Название характеристики:</label>
+        <input type="number" th:id="${'stat-' + stat.statName}" th:field="*{stats[__${iterStat.index}__].valueOfStat}" required>
+    </div>
+    <!-- Добавление дополнительных статов -->
+    <div id="additionalStats"></div>
+    <button type="button" onclick="addStat()">Добавить характеристику</button>
+    <!--<script th:each="stat :${stats}" th:object="${stat}" th:utext="
+   |console.log('${stat.statName}')
+      console.log('*{valueOfStat}')|">
+        console.log()
+    </script>-->
+</fieldset>

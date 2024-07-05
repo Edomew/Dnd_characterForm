@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма персонажа</title>
+    <link rel="stylesheet" th:href="@{/content/css/main.css}">
+</head>
+<body>
+<form th:action="@{/character/submit-character}" th:object="${character}" method="post">
+    <!-- Основные поля персонажа -->
+    <div>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" th:field="*{characterName}" required>
+    </div>
+    <div>
+        <label for="sex">Пол:</label>
+        <select id="sex" th:field="*{characterSex}" required>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+            <option value="other">Другой</option>
+        </select>
+    </div>
+    <div>
+        <label for="race">Раса:</label>
+        <input type="text" id="race" th:field="*{characterRace}" required>
+    </div>
+    <div>
+        <label for="class">Класс:</label>
+        <input type="text" id="class" th:field="*{characterClass}" required>
+    </div>
+    <div>
+        <label for="level">Уровень:</label>
+        <input type="number" id="level" th:field="*{characterLevel}" min="1" max="20" required>
+    </div>
+    <div>
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" th:field="*{characterAge}" min="1" required>
+    </div>
+
+    <div>
+        <label for="damageBonus">Бонус урона:</label>
+        <input type="number" id="damageBonus" th:field="*{characterBonusDamage}" min="0">
+    </div>
+
+    <fieldset th:insert="~{fragments/statisticFragment::stat(statistics=${statistics})}" ></fieldset>
+
+    <!-- Поля для снаряжения -->
+    <fieldset th:insert="~{fragments/equipmentFragment::equip(equipment=${equipment})}"></fieldset>
+
+    <!-- Поля для рюкзака -->
+    <fieldset th:insert="~{fragments/bagFragment::bag(bag=${bag},moneyIn=${money})}"></fieldset>
+
+    <!-- Поля для навыков -->
+    <fieldset th:insert="~{fragments/skillListFragment::skills(skills=${skills})}"></fieldset>
+
+    <div>
+        <label for="history">История:</label>
+        <textarea id="history" th:field="*{historyOfCharacter}"></textarea>
+    </div>
+
+    <button type="submit">Отправить</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/content/js/index.js}"></script>
+</body>
+</html>

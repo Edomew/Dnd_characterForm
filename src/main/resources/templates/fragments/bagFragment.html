@@ -1,0 +1,6 @@
+<fieldset th:fragment="bag(bag,moneyIn)">
+    <legend>Рюкзак:</legend>
+    <div th:insert="~{fragments/moneyFragment::moneyInBag(money=${moneyIn})}"></div>
+    <div id="bagItems"></div>
+    <button type="button" onclick="addBagItem()">Добавить предмет в рюкзак</button>
+</fieldset>
