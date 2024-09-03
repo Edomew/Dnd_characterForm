@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонаж</title>
+    <link rel="stylesheet" th:href="@{/content/css/complete-styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Персонаж: <span th:text="${character.characterName}">Имя персонажа</span></h1>
+    <div class="character-details">
+        <h2>Основная информация</h2>
+        <p><strong>Имя:</strong> <span th:text="${character.characterName}">Имя персонажа</span></p>
+        <p><strong>Пол:</strong> <span th:text="${character.characterSex.name}">Пол персонажа</span></p>
+        <p><strong>Раса:</strong> <span th:text="${character.characterRace.name}">Раса персонажа</span></p>
+        <p><strong>Класс:</strong> <span th:text="${character.characterClass.name}">Класс персонажа</span></p>
+        <p><strong>Уровень:</strong> <span th:text="${character.characterLevel}">Уровень персонажа</span></p>
+        <p><strong>Возраст:</strong> <span th:text="${character.characterAge}">Возраст персонажа</span></p>
+        <p><strong>Бонусный урон:</strong> <span th:text="${character.characterBonusDamage}">Бонусный урон</span></p>
+        <p><strong>История:</strong> <span class="history-text" th:text="${character.historyOfCharacter}">История персонажа</span></p>
+        <p><strong>Вместимость сумки:</strong> <span th:text="${character.characterBag.bagCapacity}">Вместимость сумки</span></p>
+        <p><strong>Золото:</strong> <span th:text="${character.characterBag.bagMoney.gold}">Золото</span></p>
+        <p><strong>Серебро:</strong> <span th:text="${character.characterBag.bagMoney.silver}">Серебро</span></p>
+        <p><strong>Бронза:</strong> <span th:text="${character.characterBag.bagMoney.bronze}">Бронза</span></p>
+        <h2>Характеристики</h2>
+        <ul>
+            <li th:each="characteristic : ${character.characterCharacteristics}">
+                <span th:text="${characteristic.characteristicName}">Название характеристики</span>: <span th:text="${characteristic.valueOfCharacteristic}">Значение</span>
+            </li>
+        </ul>
+        <h2>Навыки</h2>
+        <ul>
+            <li th:each="skill : ${character.characterSkills}">
+                <span th:text="${skill.skillName}">Название навыка</span>: <span th:text="${skill.skillLevel}">Уровень навыка</span>
+            </li>
+        </ul>
+        <h2>Снаряжение</h2>
+        <ul>
+            <li th:each="equipment : ${character.characterEquipment}">
+                <span th:text="${equipment.equipmentName}">Название снаряжения</span>: <span th:text="${equipment.equipmentCategory}">Тип снаряжения</span>
+            </li>
+        </ul>
+    </div>
+    <div class="button-group">
+        <a href="/home" class="button">На главную страницу</a>
+        <a th:href="@{/character-editing/{id}(id=${character.characterId})}" class="button">Редактировать персонажа</a>
+    </div>
+</div>
+</body>
+</html>

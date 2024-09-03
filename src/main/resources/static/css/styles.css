@@ -1,0 +1,142 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e8f5e9; /* светло-зеленый фон */
+}
+
+.container {
+    width: 30%;
+    min-width: 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: #c8e6c9; /* зеленый фон для контейнера */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-size: 2.34em; /* Увеличенный размер, в два раза больше, чем у h3 */
+    color: #2e7d32; /* Темно-зеленый цвет шрифта */
+}
+
+.form-label * {
+    font-size: 2em; /* Увеличенный размер для всех внутренних элементов */
+    color: #2e7d32; /* Темно-зеленый цвет шрифта для внутренних элементов */
+}
+
+/* Медиа-запрос для экранов меньше Full HD (1920px) */
+@media (max-width: 1920px) {
+    .form-label {
+        font-size: 2em; /* Увеличенный размер, в два раза больше, чем у h4 */
+    }
+
+    .form-label * {
+        font-size: 1.6em; /* Увеличенный размер для всех внутренних элементов */
+    }
+}
+
+/* Медиа-запрос для ещё меньших экранов */
+@media (max-width: 1200px) {
+    .form-label {
+        font-size: 1.66em; /* Увеличенный размер, в два раза больше, чем у h5 */
+    }
+
+    .form-label * {
+        font-size: 1.4em; /* Увеличенный размер для всех внутренних элементов */
+    }
+}
+
+
+.form-field div {
+    border: 3px solid #2e7d32; /* Темно-зеленый цвет обводки */
+    border-radius: 8px; /* Закругление углов */
+    padding: 10px; /* Отступы внутри div */
+    margin-bottom: 10px; /* Отступ снизу для разделения между полями */
+}
+
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2e7d32; /* темно-зеленый текст */
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    resize: vertical; /* позволяет textarea растягиваться вертикально */
+}
+
+.form-input {
+    display: flex;
+    align-items: center;
+}
+
+.form-input label {
+    margin-right: 10px;
+}
+
+.form-input input {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+
+.form-field textarea {
+    min-height: 100px; /* минимальная высота для textarea */
+}
+
+.button-group {
+    margin-top: 20px;
+    text-align: center; /* центрирует кнопки в группе */
+}
+
+.button-group .add {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1976d2; /* синий цвет для добавления */
+    color: white;
+    cursor: pointer;
+    margin-right: 10px; /* добавляет пространство между кнопками */
+}
+
+.button-group .delete {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d32f2f; /* красный цвет для удаления */
+    color: white;
+    cursor: pointer;
+    margin-right: 10px; /* добавляет пространство между кнопками */
+}
+
+.button-group .next {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #43a047; /* зеленый цвет для продолжения */
+    color: white;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    opacity: 0.8; /* немного прозрачный при наведении */
+}
+
+.history-text {
+    white-space: pre-wrap;
+}

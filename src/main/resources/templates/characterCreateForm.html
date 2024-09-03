@@ -1,0 +1,117 @@
+<!-- characterCreateForm.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создание персонажа</title>
+    <link rel="stylesheet" th:href="@{/content/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Содержимое вашей формы -->
+    <h1>Создание персонажа</h1>
+    <form th:action="@{/character-creation/loading}" th:object="${userCharacter}" method="post">
+        <div class="form-field">
+            <label for="characterName">Имя персонажа:</label>
+            <input type="text" id="characterName" th:field="*{characterName}" required/>
+        </div>
+        <div class="form-field">
+            <label for="characterSex">Пол персонажа:</label>
+            <select id="characterSex" th:field="*{characterSex}" required>
+                <option th:each="sex : ${sexes}" th:value="${sex}" th:text="${sex.name}">Мужской</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="characterRace">Раса персонажа:</label>
+            <select id="characterRace" th:field="*{characterRace}" required>
+                <option th:each="race : ${races}" th:value="${race}" th:text="${race.name}">Человек</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="characterClass">Класс персонажа:</label>
+            <select id="characterClass" th:field="*{characterClass}" required>
+                <option th:each="class : ${classes}" th:value="${class}" th:text="${class.name}">Воин</option>
+            </select>
+        </div>
+        <!-- Добавление дополнительных полей -->
+        <div class="form-field">
+            <label for="characterLevel">Уровень персонажа:</label>
+            <input type="number" id="characterLevel" th:field="*{characterLevel}" th:value="1" min="1" max="20"
+                   required/>
+        </div>
+        <div class="form-field">
+            <label for="characterAge">Возраст персонажа:</label>
+            <input type="number" id="characterAge" th:field="*{characterAge}" th:value="1" min="1" required/>
+        </div>
+        <div class="form-field">
+            <label for="characterBonusDamage">Бонусный урон персонажа:</label>
+            <input type="number" id="characterBonusDamage" th:field="*{characterBonusDamage}" th:value="0" required/>
+        </div>
+        <div class="form-field">
+            <label for="historyOfCharacter">История персонажа:</label>
+            <textarea id="historyOfCharacter" th:field="*{historyOfCharacter}" required minlength="100"></textarea>
+        </div>
+        <div class="form-field">
+            <label for="bagCapacity">Вместимость сумки:</label>
+            <input type="number" id="bagCapacity" th:field="*{characterBag.bagCapacity}" required/>
+        </div>
+        <div class="form-input form-field">
+            <label for="gold">Золото:</label>
+            <input type="text" id="gold" th:field="*{characterBag.bagMoney.gold}" oninput="updateMoney()" min="0"
+                   max="99" required/>
+        </div>
+        <div class="form-input form-field">
+            <label for="silver">Серебро:</label>
+            <input type="text" id="silver" th:field="*{characterBag.bagMoney.silver}" oninput="updateMoney()" min="0"
+                   max="99" required/>
+        </div>
+        <div class="form-input form-field">
+            <label for="bronze">Бронза:</label>
+            <input type="text" id="bronze" th:field="*{characterBag.bagMoney.bronze}" oninput="updateMoney()" min="0"
+                   max="99"
+                   required/>
+        </div>
+        <div class="form-input">
+            <label for="amountOfMoney">Количество денег:</label>
+            <div id="totalMoney">золото.серебро(Два значения после запятой)бронза(Два значения после запятой)</div>
+            <input type="hidden" id="amountOfMoney" th:field="*{characterBag.bagMoney.amountOfMoney}" required/>
+        </div>
+        <div id="items-field" class="form-field bag-items-field"></div>
+        <div class="button-group">
+            <button type="button" onclick="addItem();">Добавить предмет</button>
+        </div>
+        <div id="characteristics-field" class="form-field">
+            <div th:each="characteristic, iter : *{characterCharacteristics}" class="form-field">
+                <label class="form-label" th:for="'characteristicName' + ${iter.index}"
+                       th:text="*{characterCharacteristics[__${iter.index}__].characteristicName}">Название
+                    характеристики:</label>
+                <p class="form-input">
+                    <label th:for="'valueOfCharacteristic' + ${iter.index}">Значение:</label>
+                    <input type="number" th:id="'valueOfCharacteristic' + ${iter.index}"
+                           th:field="*{characterCharacteristics[__${iter.index}__].valueOfCharacteristic}" required/>
+                </p>
+            </div>
+        </div>
+        <div class="button-group">
+            <button class="add" type="button" onclick="addCharacteristic();">Добавить характеристику</button>
+        </div>
+        <div id="skills-field"></div>
+        <div class="button-group">
+            <button class="add" type="button" onclick="addSkill();">Добавить навык</button>
+        </div>
+        <div id="equipment-field"></div>
+        <div class="button-group">
+            <button class="add" type="button" onclick="addEquipment();">Добавить снаряжение</button>
+        </div>
+        <div class="button-group">
+            <button class="next" type="submit">Завершить</button>
+        </div>
+    </form>
+</div>
+<script th:src="@{/content/js/character/characterScript.js}"></script>
+<script th:src="@{/content/js/character/fields/bagFields/moneyScript.js}"></script>
+<script th:src="@{/content/js/character/fields/bagFields/itemsScript.js}"></script>
+<script th:src="@{/content/js/character/fields/characteristicScript.js}"></script>
+<script th:src="@{/content/js/character/fields/skillScript.js}"></script>
+<script th:src="@{/content/js/character/fields/equipmentScript.js}"></script>
+</body>
+</html>
