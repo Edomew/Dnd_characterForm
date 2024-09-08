@@ -20,7 +20,7 @@ spring:
           show-sql: true
      docker:
           compose:
-               enabled: false
+               enabled: true
      devtools:
           restart:
                enabled: true

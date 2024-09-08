@@ -1,4 +1,4 @@
-<!-- characterCreateForm.html -->
+<!-- character-create.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -9,7 +9,7 @@
 <div class="container">
     <!-- Содержимое вашей формы -->
     <h1>Создание персонажа</h1>
-    <form th:action="@{/character-creation/loading}" th:object="${userCharacter}" method="post">
+    <form th:action="@{/characters/loading}" th:object="${userCharacter}" method="post">
         <div class="form-field">
             <label for="characterName">Имя персонажа:</label>
             <input type="text" id="characterName" th:field="*{characterName}" required/>
